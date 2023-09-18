@@ -15,7 +15,9 @@ function Contact() {
             body: JSON.stringify({ name: data.name, email: data.email, message: data.message })
         });
         const json = await response.json()
-        console.log(json)
+        if (json.status === 'Success')
+            alert("Message sent successfully")
+
     }
     return (
         <div class="px-2 md:px-8 grid gap-8 grid-cols-1 md:grid-cols-2 py-3 text-gray-100 rounded-lg shadow-lg overflow-y-scroll h-full">
@@ -40,7 +42,7 @@ function Contact() {
                         {...register("name",
                             {
                                 required: "Please enter a valid name",
-                                pattern:{
+                                pattern: {
                                     value: new RegExp("[A-Za-z]{3,}"),
                                     message: "Name must be atleast 3 characters long"
                                 },
@@ -57,7 +59,7 @@ function Contact() {
                         {...register("email",
                             {
                                 required: "Please enter a valid email address",
-                                pattern:{
+                                pattern: {
                                     value: new RegExp("^[\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$"),
                                     message: "Please enter a valid email address"
                                 },
@@ -74,7 +76,7 @@ function Contact() {
                         {...register("message",
                             {
                                 required: "Message cannot be empty",
-                                pattern:{
+                                pattern: {
                                     value: new RegExp("[A-Za-z]{10,}"),
                                     message: "Message should be atleast 10 characters long."
                                 },
@@ -83,7 +85,7 @@ function Contact() {
                     {errors["message"] && <span className="inline-block w-full text-red-600 text-xs ml-1">{errors["message"].message}</span>}
                 </div>
                 <div>
-                <input className="uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline cursor-pointer" type="submit" />
+                    <input className="uppercase text-sm font-bold tracking-wide bg-indigo-500 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline cursor-pointer" type="submit" />
                 </div>
             </form>
         </div>
