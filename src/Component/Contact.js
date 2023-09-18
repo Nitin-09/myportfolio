@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 
 function Contact() {
-    const host = "http://localhost:5000"
+    const host = "https://cool-brigadeiros-0338cb.netlify.app//.netlify/functions/api/"
     const { register, handleSubmit, formState: { errors } } = useForm({ mode: "all" });
     const onSubmit = async (data) => {
         const response = await fetch(`${host}/contact`, {
