@@ -5,6 +5,7 @@ import About from './About'
 import Contact from './Contact'
 import { useParams } from 'react-router-dom'
 import Gallery from './Gallery'
+import ThankYou from './ThankYou'
 
 function Layout() {
     const { page } = useParams();
@@ -17,6 +18,7 @@ function Layout() {
                 {page === 'about' && <About />}
                 {page === 'contactme' && <Contact />}
                 {page === 'gallery' && <Gallery />}
+                {page === 'ThankYou' && <ThankYou />}
 
             </div>
             <div className='h-[20vh] md:h-[50vh] w-[100vw] md:w-[50vh] border-b-4 border-r-4 border-black self-end'></div>

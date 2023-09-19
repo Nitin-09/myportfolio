@@ -1,11 +1,14 @@
 import React from 'react'
 import contactSVG from '../Assest/img.svg'
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 
 
 function Contact() {
     const host = "https://cool-brigadeiros-0338cb.netlify.app//.netlify/functions/api/"
+    // const host = "http://localhost:5000/.netlify/functions/api"
     const { register, handleSubmit, formState: { errors } } = useForm({ mode: "all" });
+    let navigate = useNavigate()
     const onSubmit = async (data) => {
         const response = await fetch(`${host}/contact`, {
             method: 'POST',
@@ -16,7 +19,7 @@ function Contact() {
         });
         const json = await response.json()
         if (json.status === 'Success')
-            alert("Message sent successfully")
+            navigate('/ThankYou')
 
     }
     return (
